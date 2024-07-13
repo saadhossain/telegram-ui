@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+    background: linear-gradient(to top right, #70a889, #cad48c);
+}
+
+.contentArea {
+    background: url('./assets/pattern-5.svg');
+    opacity: 0.2;
+}
