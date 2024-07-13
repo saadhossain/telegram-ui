@@ -1,7 +1,9 @@
 
 const MiddleContent = () => {
   return (
-    <div>Content Area</div>
+    <div>
+      <h1>Please Click on a Chat to Start Conversation.</h1>
+    </div>
   )
 }
 

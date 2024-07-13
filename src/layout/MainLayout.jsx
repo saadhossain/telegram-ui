@@ -1,17 +1,17 @@
-import { Outlet } from 'react-router-dom'
-import Sidebar from '../components/sidebar/Sidebar'
+import { Outlet } from 'react-router-dom';
+import Sidebar from '../components/sidebar/Sidebar';
 
 const MainLayout = () => {
     return (
-        <div className='flex text-gray-200'>
-            <div className='w-[25vw] bg-white'>
+        <div className='flex h-screen'>
+            <div className='w-[25vw] bg-white overflow-y-auto'>
                 <Sidebar />
             </div>
-            <div className="flex-1 p-6 min-h-screen contentArea">
+            <div className="flex-1 contentArea overflow-hidden">
                 <Outlet />
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default MainLayout
+export default MainLayout;

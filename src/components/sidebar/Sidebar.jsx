@@ -1,14 +1,16 @@
 import { useGetChatsQuery } from '../../features/apiSlice';
 import DisplayChats from '../DisplayChats';
+import ChatLoading from '../spinner/ChatLoading';
+import SearchBar from './SearchBar';
 
 const Sidebar = () => {
-  const { isLoading, data:chats } = useGetChatsQuery('get_all_chats?page=1');
+  const { isLoading, data: chats } = useGetChatsQuery('get_all_chats');
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <ChatLoading />
   }
-  // console.log(data);
   return (
-    <div className='sticky top-0 min-h-screen p-6'>
+    <div className='min-h-screen p-2 pt-0'>
+      <SearchBar />
       <div>
         {
           chats.map((chat) => <DisplayChats key={chat.id} chat={chat} />)
