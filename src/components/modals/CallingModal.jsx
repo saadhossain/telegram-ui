@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setIsCallingModalOpen } from '../../features/callingSlice';
 import { getRandomColor } from '../../utils/getRamdomBgColor';
 import UserProfileImg from '../UserProfileImg';
-import CallControls from './CallControls';
+import CallControls from '../calling/CallControls';
 
 const style = {
     position: 'absolute',

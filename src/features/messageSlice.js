@@ -4,6 +4,7 @@ const initialState = {
     micIcon: null,
     sendIcon: null,
     isRecordingStarted: false,
+    timeLeft : 600000
 };
 
 export const messageSlice = createSlice({
@@ -18,10 +19,13 @@ export const messageSlice = createSlice({
         },
         setIsRecordingStarted : (state)=> {
             state.isRecordingStarted = !state.isRecordingStarted
+        },
+        setTimeLeft : (state, action)=> {
+            state.timeLeft = action.payload
         }
     }
 })
 
-export const {setMicIcon, setSendIcon, setIsRecordingStarted} = messageSlice.actions;
+export const {setMicIcon, setSendIcon, setIsRecordingStarted, setTimeLeft} = messageSlice.actions;
 
 export default messageSlice.reducer

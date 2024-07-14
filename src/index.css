@@ -118,3 +118,7 @@ body {
 .message__image:hover .message__time {
     opacity: 1;
 }
+
+.voiceRecord:hover .micIcon{
+    color: #fff
+}
