@@ -27,13 +27,13 @@ const ChatHead = () => {
     const open = Boolean(anchorEl);
     const id = open ? 'chat-menu-popover' : undefined;
     return (
-        <div className='bg-white py-2 px-5 flex items-center justify-between sticky top-0 z-50'>
+        <div className='bg-white dark:bg-darkBg text-black dark:text-white py-2 px-5 flex items-center justify-between sticky top-0 z-50'>
             {/* User Details Section */}
             <div>
                 <div className='flex items-center gap-2'>
                     <UserProfileImg userName={activeChatUser?.sender?.name} />
                     <div>
-                        <h4 className='text-lg font-semibold text-black'>{activeChatUser?.sender?.name ? activeChatUser?.sender?.name : 'Unknown'}</h4>
+                        <h4 className='text-lg font-semibold'>{activeChatUser?.sender?.name ? activeChatUser?.sender?.name : 'Unknown'}</h4>
                         <p>last seen {lastSeenAt ? lastSeenAt : 'Long Time ago'}</p>
                     </div>
                 </div>
@@ -42,20 +42,20 @@ const ChatHead = () => {
             <div className='flex items-center gap-2'>
                 {/* Search Icon */}
                 <div
-                    className='hover:bg-ltHover p-2 rounded-full cursor-pointer text-iconColor'
+                    className='hover:bg-ltHover dark:hover:bg-darkHover p-2 rounded-full cursor-pointer text-iconColor dark:text-gray-400'
                 >
                     <SearchIcon />
                 </div>
                 {/* Calling Icon */}
                 <div
-                    className='hover:bg-ltHover p-2 rounded-full cursor-pointer text-iconColor'
+                    className='hover:bg-ltHover dark:hover:bg-darkHover p-2 rounded-full cursor-pointer text-iconColor dark:text-gray-400'
                     onClick={() => dispatch(setIsCallingModalOpen())}
                 >
                     <CallIcon />
                 </div>
                 {/* Menu Icon */}
                 <button
-                    className='hover:bg-ltHover p-2 rounded-full cursor-pointer text-iconColor'
+                    className='hover:bg-ltHover dark:hover:bg-darkHover p-2 rounded-full cursor-pointer text-iconColor dark:text-gray-400'
                     aria-describedby={id} variant="contained" onClick={handleClick}
                 >
                     <MoreVertIcon />

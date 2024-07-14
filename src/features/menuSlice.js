@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     openChatMenu: false,
-    darkMode: false
+    theme: 'light'
 };
 
 export const menusSlice = createSlice({
@@ -12,12 +12,12 @@ export const menusSlice = createSlice({
         setOpenChatMenu: (state) => {
             state.openChatMenu = !state.openChatMenu;
         },
-        setDarkMode: (state) => {
-            state.darkMode = !state.darkMode;
+        setTheme: (state, action) => {
+            state.theme = action.payload;
         }
     }
 });
 
-export const { setOpenChatMenu, setDarkMode } = menusSlice.actions;
+export const { setOpenChatMenu, setTheme } = menusSlice.actions;
 
 export default menusSlice.reducer;

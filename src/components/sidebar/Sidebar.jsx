@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 import { useGetChatsQuery } from '../../features/apiSlice';
 import DisplayChats from '../DisplayChats';
 import ChatLoading from '../spinner/ChatLoading';
@@ -9,7 +10,7 @@ const Sidebar = () => {
     return <ChatLoading />
   }
   return (
-    <div className='min-h-screen p-2 pt-0'>
+    <div className='min-h-screen p-2 pt-0 bg-white dark:bg-darkBg'>
       <SearchBar />
       <div>
         {

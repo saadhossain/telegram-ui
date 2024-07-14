@@ -2,9 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --text-color: #000;
+    --bg-color:#fff;
+    --bg-gradient: linear-gradient(to top right, #4a7e62, #9ea85e);
+    --mymsg-bg: #effdde;
+    --mysmg-color:#000;
+    --mymsg-time-color:#5dc452;
 
+}
+
+/* Dark theme */
+html.dark {
+    --text-color: #fff;
+    --bg-color: #212121;
+    --bg-gradient: linear-gradient(to top right, #0f0f0f, #0f0f0f);
+    --mymsg-bg: #766AC8;
+    --mysmg-color:#fff;
+    --mymsg-time-color: #B7B0E2;
+}
+
+/* Apply the custom properties */
 body {
-    background: linear-gradient(to top right, #70a889, #cad48c);
+    background: var(--bg-gradient);
+    color: var(--text-color);
 }
 
 .contentArea {
@@ -34,7 +55,8 @@ body {
     position: relative;
     min-height: 30px;
     max-width: 420px;
-    background-color: #fff;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     margin-bottom: 8px;
     border-radius: 6px;
     z-index: 2;
@@ -42,7 +64,8 @@ body {
 
 .message.my-message {
     align-self: flex-end;
-    background-color: #effdde;
+    background-color: var(--mymsg-bg);
+    color: var(--mysmg-color)
 }
 
 .message.droplet:before {
@@ -98,27 +121,9 @@ body {
 }
 
 .my-message .message__time {
-    color: #5dc452;
+    color: var(--mymsg-time-color);
 }
 
-.message__image .message__time {
-    display: block;
-    float: initial;
-    position: absolute;
-    bottom: 4px;
-    right: 4px;
-    padding: 4px;
-    color: #fff;
-    background-color: rgba(38, 50, 56, .5);
-    border-radius: 6px;
-    transition: opacity .2s linear;
-    opacity: 0;
-}
-
-.message__image:hover .message__time {
-    opacity: 1;
-}
-
-.voiceRecord:hover .micIcon{
+.voiceRecord:hover .micIcon {
     color: #fff
 }

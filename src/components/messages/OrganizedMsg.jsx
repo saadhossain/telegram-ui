@@ -10,7 +10,7 @@ const OrganizedMsg = ({ msg }) => {
                     if (match) {
                         const url = match[2];
                         return (
-                            <a key={partIndex} href={url} target="_blank" rel="noopener noreferrer" className='text-primary hover:underline'>
+                            <a key={partIndex} href={url} target="_blank" rel="noopener noreferrer" className='text-primary dark:text-white hover:underline dark:underline'>
                                 {url}
                             </a>
                         );

@@ -8,8 +8,10 @@ import VideocamIcon from '@mui/icons-material/Videocam';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
+import { useSelector } from 'react-redux';
 
 const ChatMenus = ({ id, open, anchorEl, handleClose }) => {
+    const { theme } = useSelector((state) => state.menus);
     return (
         <div>
             <Popover
@@ -27,37 +29,43 @@ const ChatMenus = ({ id, open, anchorEl, handleClose }) => {
                 }}
                 sx={{ marginTop: '60px' }}
             >
-                <Typography sx={{ p: 2, backgroundColor: '#D9E8DF', width: '220px'}}>
+                <Typography sx={{
+                    p: 2,
+                    backgroundColor: theme === 'light' ? '#fff' : '#212121',
+                    color: theme === 'light' ? '#000' : '#fff',
+                    width: '220px'
+                }}>
                     <div className='flex flex-col gap-1'>
-                        <button className='flex gap-3 items-center text-sm  hover:bg-[#CCD9D0] p-1 rounded duration-200 ease-in-out'>
-                            <EditIcon fontSize='small' className='text-iconColor' />
+                        <button className='flex gap-3 items-center text-sm  hover:bg-[#CCD9D0] dark:hover:bg-[#121212] p-1 rounded duration-200 ease-in-out'>
+                            <EditIcon fontSize='small' className='text-iconColor dark:text-white' />
                             Edit
                         </button>
-                        <button className='flex gap-3 items-center text-sm  hover:bg-[#CCD9D0] p-1 rounded duration-200 ease-in-out'>
-                            <VideocamIcon fontSize='small' className='text-iconColor' />
+                        <button className='flex gap-3 items-center text-sm  hover:bg-[#CCD9D0] dark:hover:bg-[#121212] p-1 rounded duration-200 ease-in-out'>
+                            <VideocamIcon fontSize='small' className='text-iconColor dark:text-white' />
                             Video Call
                         </button>
-                        <button className='flex gap-3 items-center text-sm  hover:bg-[#CCD9D0] p-1 rounded duration-200 ease-in-out'>
-                            <NotificationsOffIcon fontSize='small' className='text-iconColor' />
+                        <button className='flex gap-3 items-center text-sm  hover:bg-[#CCD9D0] dark:hover:bg-[#121212] p-1 rounded duration-200 ease-in-out'>
+                            <NotificationsOffIcon fontSize='small' className='text-iconColor dark:text-white' />
                             Mute...
                         </button>
-                        <button className='flex gap-3 items-center text-sm  hover:bg-[#CCD9D0] p-1 rounded duration-200 ease-in-out'>
-                            <CheckCircleOutlineIcon fontSize='small' className='text-iconColor' />
+                        <button className='flex gap-3 items-center text-sm  hover:bg-[#CCD9D0] dark:hover:bg-[#121212] p-1 rounded duration-200 ease-in-out'>
+                            <CheckCircleOutlineIcon fontSize='small' className='text-iconColor dark:text-white' />
                             Select messages
                         </button>
-                        <button className='flex gap-3 items-center text-sm  hover:bg-[#CCD9D0] p-1 rounded duration-200 ease-in-out'>
-                            <FlagIcon fontSize='small' className='text-iconColor' />
+                        <button className='flex gap-3 items-center text-sm  hover:bg-[#CCD9D0] dark:hover:bg-[#121212] p-1 rounded duration-200 ease-in-out'>
+                            <FlagIcon fontSize='small' className='text-iconColor dark:text-white' />
                             Report
                         </button>
-                        <button className='flex gap-3 items-center text-sm  hover:bg-[#CCD9D0] p-1 rounded duration-200 ease-in-out'>
-                            <Redeem fontSize='small' className='text-iconColor' />
+                        <button className='flex gap-3 items-center text-sm  hover:bg-[#CCD9D0] dark:hover:bg-[#121212] p-1 rounded duration-200 ease-in-out'>
+                            <Redeem fontSize='small' className='text-iconColor dark:text-white' />
                             Gitf Premium
                         </button>
-                        <button className='flex gap-3 items-center text-sm  hover:bg-[#CCD9D0] p-1 rounded duration-200 ease-in-out'>
-                            <BackHand fontSize='small' className='text-iconColor' />
+                        <button className='flex gap-3 items-center text-sm  hover:bg-[#CCD9D0] dark:hover:bg-[#121212] p-1 rounded duration-200 ease-in-out'>
+                            <BackHand fontSize='small' className='text-iconColor dark:text-white' />
                             Block user
                         </button>
-                        <button className='flex gap-3 items-center text-sm  hover:bg-[#CCD9D0] p-1 rounded duration-200 ease-in-out text-danger border-t-2 border-[#CED6C9]'>
+                        <hr/>
+                        <button className='flex gap-3 items-center text-sm  hover:bg-[#CCD9D0] dark:hover:bg-[#121212] p-1 rounded duration-200 ease-in-out text-danger'>
                             <DeleteOutlineIcon fontSize='small' />
                             Delete Chat
                         </button>

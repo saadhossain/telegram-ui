@@ -25,7 +25,7 @@ const MessagesContent = () => {
       {/* Display Messages */}
       <div className='w-8/12 mx-auto my-8'>
       {/* Display the Message Sending Date */}
-      <div className='w-28 mx-auto bg-[#81a778b6] text-center font-semibold text-white rounded-2xl p-1 mb-2'>{sendOn}</div>
+      <div className='w-28 mx-auto bg-[#81a778b6] dark:bg-darkHover bg-opacity-20 text-center font-semibold text-white rounded-2xl p-1 mb-2 sticky top-24 z-50'>{sendOn}</div>
         <div className=''>
           {
             messages.map((message) => <DisplayMessages key={message.id} message={message} />)
