@@ -11,6 +11,8 @@ export default {
         'ltHover': '#F4F4F5',
         'darkPrimary': '#766AC8',
         'darkHover': '#2C2C2C',
+        'iconColor': '#707579',
+        'danger': '#E53935'
       }
     },
   },

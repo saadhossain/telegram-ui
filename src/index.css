@@ -6,6 +6,115 @@
 body {
     background: linear-gradient(to top right, #70a889, #cad48c);
 }
+
 .contentArea {
     background: url('./assets/pattern-5.svg');
+}
+
+
+/* Messages Styes */
+.chat__body {
+    display: flex;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: flex-end;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 6px;
+}
+
+.message {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    position: relative;
+    min-height: 30px;
+    max-width: 420px;
+    background-color: #fff;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    z-index: 2;
+}
+
+.message.my-message {
+    align-self: flex-end;
+    background-color: #effdde;
+}
+
+.message.droplet:before {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: -8px;
+    width: 12px;
+    height: 1px;
+    background-color: inherit;
+    z-index: 1;
+}
+
+.message.droplet:after {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: -10px;
+    width: 16px;
+    height: 10px;
+    clip-path: url(#left-droplet);
+    background-color: inherit;
+    z-index: 1;
+}
+
+.message.my-message.droplet:before {
+    right: -8px;
+    left: initial;
+}
+
+.message.my-message.droplet:after {
+    right: -10px;
+    left: initial;
+    clip-path: url(#right-droplet);
+}
+
+.message__text {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    z-index: 2;
+}
+
+.message__time {
+    display: inline-block;
+    float: right;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 14px;
+    text-align: right;
+    font-size: 12px;
+    color: #a0acb6;
+}
+
+.my-message .message__time {
+    color: #5dc452;
+}
+
+.message__image .message__time {
+    display: block;
+    float: initial;
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    padding: 4px;
+    color: #fff;
+    background-color: rgba(38, 50, 56, .5);
+    border-radius: 6px;
+    transition: opacity .2s linear;
+    opacity: 0;
+}
+
+.message__image:hover .message__time {
+    opacity: 1;
 }

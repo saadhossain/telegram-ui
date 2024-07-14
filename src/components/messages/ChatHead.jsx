@@ -10,7 +10,7 @@ const ChatHead = () => {
     const { activeChatUser } = useSelector((state) => state.chat);
     const lastSeenAt = getLastSeenTime(activeChatUser.updated_at);
     return (
-        <div className='bg-white py-2 px-5 flex items-center justify-between'>
+        <div className='bg-white py-2 px-5 flex items-center justify-between sticky top-0 z-50'>
             {/* User Details Section */}
             <div>
                 <div className='flex items-center gap-2'>
