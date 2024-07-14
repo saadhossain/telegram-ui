@@ -14,11 +14,11 @@ const TelegramMenus = ({ id, open, anchorEl, handleClose }) => {
         dispatch(setTheme(newTheme));
         localStorage.setItem('theme', newTheme);
     };
-    const toggleTgMenu = () => {
-        setTimeout(() => {
-            handleClose();
-        }, 300);
-    };
+    // const toggleTgMenu = () => {
+    //     setTimeout(() => {
+    //         handleClose();
+    //     }, 300);
+    // };
     return (
         <div>
             <Popover
@@ -65,7 +65,7 @@ const TelegramMenus = ({ id, open, anchorEl, handleClose }) => {
                                 Night Mode
                                 <Switch
                                     checked={theme === 'dark'}
-                                    onChange={() => toggleTheme()}
+                                    // onChange={() => toggleTheme()}
                                     onClick={toggleTgMenu}
                                     inputProps={{ 'aria-label': 'controlled' }}
                                     size="small"
