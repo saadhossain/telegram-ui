@@ -1,14 +1,16 @@
+import CallIcon from '@mui/icons-material/Call';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import SearchIcon from '@mui/icons-material/Search';
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setIsCallingModalOpen } from '../../features/callingSlice';
 import { getLastSeenTime } from '../../utils/getLastSeenTime';
 import UserProfileImg from '../UserProfileImg';
-import searchIcon from '../../assets/icons/search.svg';
-import phoneIcon from '../../assets/icons/phone.svg';
-import menuIcon from '../../assets/icons/dots.svg'
 
 const ChatHead = () => {
     const { activeChatUser } = useSelector((state) => state.chat);
     const lastSeenAt = getLastSeenTime(activeChatUser.updated_at);
+    const dispatch = useDispatch();
     return (
         <div className='bg-white py-2 px-5 flex items-center justify-between sticky top-0 z-50'>
             {/* User Details Section */}
@@ -23,9 +25,25 @@ const ChatHead = () => {
             </div>
             {/* Action Area */}
             <div className='flex items-center gap-2'>
-                <img src={searchIcon} alt='Search' className='hover:bg-ltHover p-2 rounded-full cursor-pointer'/>
-                <img src={phoneIcon} alt='Phone' className='hover:bg-ltHover p-2 rounded-full cursor-pointer'/>
-                <img src={menuIcon} alt='Menu' className='hover:bg-ltHover p-2 rounded-full cursor-pointer'/>
+                {/* Search Icon */}
+                <div
+                    className='hover:bg-ltHover p-2 rounded-full cursor-pointer text-iconColor'
+                >
+                    <SearchIcon />
+                </div>
+                {/* Calling Icon */}
+                <div
+                    className='hover:bg-ltHover p-2 rounded-full cursor-pointer text-iconColor'
+                    onClick={() => dispatch(setIsCallingModalOpen())}
+                >
+                    <CallIcon />
+                </div>
+                {/* Menu Icon */}
+                <div
+                    className='hover:bg-ltHover p-2 rounded-full cursor-pointer text-iconColor'
+                >
+                    <MoreVertIcon />
+                </div>
             </div>
         </div>
     );

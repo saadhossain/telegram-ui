@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLoaderData } from 'react-router-dom';
 import { setActiveChatUser } from '../../features/chatSlice';
 import ChatHead from './ChatHead';
