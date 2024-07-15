@@ -13,7 +13,7 @@ const CallControls = () => {
     const { micOn, videoOn, screenShareOn } = useSelector((state) => state.calling);
     const dispatch = useDispatch();
     return (
-        <div className='w-8/12 mx-auto flex gap-4 items-center justify-between mt-20 text-ltHover'>
+        <div className='w-11/12 md:w-8/12 mx-auto flex gap-4 items-center justify-center md:justify-between absolute md:relative md:mt-36 md:-mb-20 bottom-20 left-4 text-ltHover'>
             {/* Mic */}
             <div className='flex flex-col items-center'>
                 <button

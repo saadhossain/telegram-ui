@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useLoaderData } from 'react-router-dom';
+import { useSwipeable } from 'react-swipeable';
 import { setActiveChatUser } from '../../features/chatSlice';
+import { setIsChatSelected } from '../../features/messageSlice';
+import { getLastMessageDate } from '../../utils/getLastMessageDate';
 import ChatHead from './ChatHead';
 import DisplayMessages from './DisplayMessages';
 import MessageInputBox from './MessageInputBox';
-import { getLastMessageDate } from '../../utils/getLastMessageDate';
+import { useIsMobile } from '../../hooks/useIsMobile';
 
 const MessagesContent = () => {
   const { data: messages } = useLoaderData();
@@ -19,14 +22,24 @@ const MessagesContent = () => {
     }
   }, [messages, dispatch]);
   const sendOn = getLastMessageDate(messages[0].created_at);
+
+  const isMobile = useIsMobile();
+
+  const handlers = useSwipeable({
+    onSwipedRight: () => {
+      dispatch(setIsChatSelected(false));
+    },
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true
+  });
   return (
-    <div>
+    <div {...(isMobile ? handlers : {})}>
       <ChatHead />
       {/* Display Messages */}
-      <div className='w-8/12 mx-auto my-8'>
-      {/* Display the Message Sending Date */}
-      <div className='w-28 mx-auto bg-[#81a778b6] dark:bg-darkHover bg-opacity-20 text-center font-semibold text-white rounded-2xl p-1 mb-2 sticky top-24 z-50'>{sendOn}</div>
-        <div className=''>
+      <div className='w-full md:w-8/12 mx-auto mt-4 md:mt-8'>
+        {/* Display the Message Sending Date */}
+        <div className='w-28 mx-auto bg-[#81a778b6] dark:bg-darkHover bg-opacity-20 text-center font-semibold text-white rounded-2xl p-1 mb-2 sticky top-20  md:top-24 z-50'>{sendOn}</div>
+        <div className='min-h-screen'>
           {
             messages.map((message) => <DisplayMessages key={message.id} message={message} />)
           }

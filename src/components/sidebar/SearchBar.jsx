@@ -1,12 +1,13 @@
+import MenuIcon from '@mui/icons-material/Menu';
 import React, { useState } from 'react';
 import { FaSearch } from "react-icons/fa";
+import { useIsMobile } from '../../hooks/useIsMobile';
 import TelegramMenus from '../menus/TelegramMenus';
-import MenuIcon from '@mui/icons-material/Menu';
+import TemporaryDrawer from '../menus/TgMenusDrawer';
 
 const SearchBar = () => {
     const [isSearchedFocused, setIsSearchedFocused] = useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
-
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -17,11 +18,21 @@ const SearchBar = () => {
 
     const open = Boolean(anchorEl);
     const id = open ? 'telegram-menu-popover' : undefined;
+
+    //Functionality for Drawer
+    const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
+
+    const toggleDrawer = (newOpen) => () => {
+        setIsDrawerOpen(newOpen);
+    };
+    const isMobile = useIsMobile();
+    const handleOpenMenus = isMobile ? toggleDrawer(true): handleClick ;
     return (
         <div className='flex gap-2 items-center sticky top-0 bg-white dark:bg-darkBg py-2'>
             <button
-                aria-describedby={id} variant="contained" onClick={handleClick}
+                aria-describedby={id} variant="contained"
                 className={`p-2 ${anchorEl !== null && 'bg-ltHover dark:bg-darkHover rounded-full'}`}
+                onClick={handleOpenMenus}
             >
                 {
                     isSearchedFocused ? <FaArrowLeft className='w-5 h-5 text-[#A4AEB6]' /> : <MenuIcon fontSize='medium' className={`text-[#A4AEB6]`} />
@@ -31,12 +42,18 @@ const SearchBar = () => {
                 <FaSearch className='w-5 h-5 text-[#A4AEB6]' />
                 <input type="text" name="search" id="search" placeholder='Search' className='w-full h-10 bg-ltHover dark:bg-darkHover focus:outline-none text-gray-900 dark:text-white text-lg' />
             </form>
-            <TelegramMenus
-                id={id}
-                open={open}
-                anchorEl={anchorEl}
-                handleClose={handleClose}
-            />
+            {/* Display Drawer and Popover menu based on device */}
+            {
+                isMobile ? <TemporaryDrawer
+                    isDrawerOpen={isDrawerOpen}
+                    toggleDrawer={toggleDrawer}
+                /> : <TelegramMenus
+                    id={id}
+                    open={open}
+                    anchorEl={anchorEl}
+                    handleClose={handleClose}
+                />
+            }
         </div>
     );
 };

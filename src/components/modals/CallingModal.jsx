@@ -32,9 +32,22 @@ const CallingModal = () => {
                 onClose={() => dispatch(setIsCallingModalOpen())}
                 aria-labelledby="Calling Modal"
                 aria-describedby="Modal for Call to the friend."
-                style={{ border: 'none' }}
+                style={{ 
+                    border: 'none',
+                    '@media (max-width:600px)': {
+                        width: '100%',
+                        height: '80vh'
+                    },
+                }}
             >
-                <Box sx={{ ...style, backgroundColor: bgColor }}>
+                <Box sx={{
+                    ...style,
+                    backgroundColor: bgColor,
+                    '@media (max-width:600px)': {
+                        width: '100%',
+                        height: '80vh'
+                    },
+                }}>
                     <button
                         onClick={() => dispatch(setIsCallingModalOpen())}
                         className='absolute top-0 right-0 font-semibold text-white text-lg p-6'>X</button>

@@ -1,3 +1,4 @@
+import { ArrowBack } from '@mui/icons-material';
 import CallIcon from '@mui/icons-material/Call';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SearchIcon from '@mui/icons-material/Search';
@@ -7,28 +8,28 @@ import { setIsCallingModalOpen } from '../../features/callingSlice';
 import { getLastSeenTime } from '../../utils/getLastSeenTime';
 import ChatMenus from '../menus/ChatMenus';
 import UserProfileImg from '../UserProfileImg';
+import { setIsChatSelected } from '../../features/messageSlice';
 
 const ChatHead = () => {
     const { activeChatUser } = useSelector((state) => state.chat);
     const lastSeenAt = getLastSeenTime(activeChatUser.updated_at);
     const dispatch = useDispatch();
-
-
+    // Functionality for open Chat Settings
     const [anchorEl, setAnchorEl] = React.useState(null);
-
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
-
     const handleClose = () => {
         setAnchorEl(null);
     };
-
     const open = Boolean(anchorEl);
     const id = open ? 'chat-menu-popover' : undefined;
     return (
-        <div className='bg-white dark:bg-darkBg text-black dark:text-white py-2 px-5 flex items-center justify-between sticky top-0 z-50'>
+        <div className='bg-white dark:bg-darkBg text-black dark:text-white py-2 px-2 md:px-5 flex items-center justify-between sticky top-0 z-50'>
             {/* User Details Section */}
+            <button onClick={() => dispatch(setIsChatSelected(false))} className='md:hidden'>
+                <ArrowBack />
+            </button>
             <div>
                 <div className='flex items-center gap-2'>
                     <UserProfileImg userName={activeChatUser?.sender?.name} />
@@ -42,7 +43,7 @@ const ChatHead = () => {
             <div className='flex items-center gap-2'>
                 {/* Search Icon */}
                 <div
-                    className='hover:bg-ltHover dark:hover:bg-darkHover p-2 rounded-full cursor-pointer text-iconColor dark:text-gray-400'
+                    className='hidden md:block hover:bg-ltHover dark:hover:bg-darkHover p-2 rounded-full cursor-pointer text-iconColor dark:text-gray-400'
                 >
                     <SearchIcon />
                 </div>

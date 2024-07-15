@@ -24,12 +24,13 @@ const MainLayout = () => {
         root.classList.remove(theme === 'light' ? 'dark' : 'light');
         root.classList.add(theme);
     }, [theme, dispatch]);
+    const { isChatSelected } = useSelector((state) => state.message);
     return (
         <div className='flex h-screen'>
-            <div className='w-[25vw] bg-white dark:bg-darkBg overflow-y-auto scrollbar-thin'>
+            <div className={`w-full md:w-[25vw] bg-white dark:bg-darkBg overflow-y-auto scrollbar-thin ${isChatSelected && 'hidden md:block'}`}>
                 <Sidebar />
             </div>
-            <div className="flex-1 contentArea overflow-y-auto scrollbar-none">
+            <div className={`w-full md:flex-1 contentArea overflow-y-auto scrollbar-none ${isChatSelected ? 'block': 'hidden'} md:block`}>
                 <Outlet />
             </div>
         </div>

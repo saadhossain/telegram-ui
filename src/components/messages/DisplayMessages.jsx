@@ -11,7 +11,7 @@ const DisplayMessages = ({ message }) => {
                 </div>
                 <div className="messages">
                     <div className={`message droplet ${message.sender.name === 'BeyondChat' && 'my-message'}`}>
-                        <div className="message__text">
+                        <div className="message__text overflow-hidden">
                             <div className={`message__text__content ${message.message.length < 50 && 'flex items-center'} pb-2`}>
                                 <div>
                                     <OrganizedMsg msg={message.message}/>
