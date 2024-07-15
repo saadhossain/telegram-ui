@@ -5,7 +5,7 @@ import { useIsMobile } from '../../hooks/useIsMobile';
 import TelegramMenus from '../menus/TelegramMenus';
 import TemporaryDrawer from '../menus/TgMenusDrawer';
 
-const SearchBar = () => {
+const SidebarHeader = () => {
     const [isSearchedFocused, setIsSearchedFocused] = useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleClick = (event) => {
@@ -58,4 +58,4 @@ const SearchBar = () => {
     );
 };
 
-export default SearchBar;
+export default SidebarHeader;

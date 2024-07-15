@@ -34,25 +34,15 @@ const TelegramMenus = ({ id, open, anchorEl, handleClose }) => {
                     vertical: 'top',
                     horizontal: 'left',
                 }}
-                sx={{ marginTop: '45px', '@media (max-width:600px)': {
-                    marginTop: '0px',    
-                    maxWidth: '100vw',
-                        overflow: 'hidden',
-                        maxHeight: '95vh',
-                        height: '95vh'
-                    } }}
+                sx={{ marginTop: '45px'}}
             >
                 <Typography sx={{
                     p: 2,
                     backgroundColor: theme === 'light' ? '#fff' : '#212121',
                     color: theme === 'light' ? '#000' : '#fff',
-                    '@media (max-width:600px)': {
-                        maxWidth: '80vw',
-                        width: '80vh',
-                        maxHeight: '85vh',
-                        height: '90vh',
-                        overflow: 'hidden'
-                    },
+                    minWidth: '17rem',
+                    maxHeight: 'calc(100* var(--vh) - 3.75rem)',
+                    overflowY: 'auto',
                 }}>
                     <div className='flex flex-col gap-2'>
                         <button className='flex gap-3 items-center text-sm   hover:bg-[#EEEEEE] dark:hover:bg-[#141414] p-2 rounded duration-200 ease-in-out'>

@@ -4,11 +4,11 @@
 
 :root {
     --text-color: #000;
-    --bg-color:#fff;
+    --bg-color: #fff;
     --bg-gradient: linear-gradient(to top right, #4a7e62, #9ea85e);
     --mymsg-bg: #effdde;
-    --mysmg-color:#000;
-    --mymsg-time-color:#5dc452;
+    --mysmg-color: #000;
+    --mymsg-time-color: #5dc452;
 
 }
 
@@ -18,7 +18,7 @@ html.dark {
     --bg-color: #212121;
     --bg-gradient: linear-gradient(to top right, #0f0f0f, #0f0f0f);
     --mymsg-bg: #766AC8;
-    --mysmg-color:#fff;
+    --mysmg-color: #fff;
     --mymsg-time-color: #B7B0E2;
 }
 
@@ -126,4 +126,36 @@ body {
 
 .voiceRecord:hover .micIcon {
     color: #fff
+}
+
+
+/* Chat open close Animations */
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 767px) {
+    .slide-in {
+        animation: slideIn 0.4s forwards;
+    }
+
+    .slide-out {
+        animation: slideOut 0.4s forwards;
+    }
 }
