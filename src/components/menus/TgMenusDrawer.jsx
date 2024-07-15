@@ -1,13 +1,15 @@
-import { Animation, Bookmark, BugReport, DarkMode, HelpOutline, HistoryToggleOff, Person, Settings } from '@mui/icons-material';
-import { Switch, Typography } from '@mui/material';
+import { Animation, Bookmark, BugReport, DarkMode, ExpandMore, HelpOutline, HistoryToggleOff, LightMode, Person, Settings } from '@mui/icons-material';
+import { Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import beyondChat from '../../assets/beyondchat.png';
 import { setTheme } from '../../features/menuSlice';
 
-const TgMenusDrawer =({ isDrawerOpen, toggleDrawer })=> {
+const TgMenusDrawer = ({ isDrawerOpen, toggleDrawer }) => {
     const { theme } = useSelector((state) => state.menus);
+    const { myDetails } = useSelector((state) => state.chat);
     const dispatch = useDispatch();
     const toggleTheme = () => {
         const newTheme = theme === 'light' ? 'dark' : 'light';
@@ -21,11 +23,29 @@ const TgMenusDrawer =({ isDrawerOpen, toggleDrawer })=> {
                     width: 300, backgroundColor: theme === 'light' ? '#fff' : '#212121',
                     color: theme === 'light' ? '#000' : '#fff',
                     height: '100%',
-                }} role="presentation" onClick={toggleDrawer(false)}>
-                    <Typography sx={{
-                        p: 2,
-                    }}>
-                        <div className='flex flex-col gap-2'>
+                }} role="presentation">
+                    <Typography>
+                        {/* My Details Section */}
+                        <div className='bg-primary dark:bg-darkHover text-white p-2 py-5'>
+                            {/* Dark/Light mode and User profile Image */}
+                            <div className='flex items-center justify-between'>
+                                <img src={beyondChat} alt='Beyond Chat' className='w-14 h-14' />
+                                <button onClick={() => toggleTheme()} className={`${theme === 'light' ? 'rotate-clock-wise': 'rotate-anti-clock-wise'}`}>
+                                    {
+                                        theme === 'light' ? <DarkMode fontSize='medium' className='text-white' /> : <LightMode fontSize='medium' className='text-white' />
+                                    }
+                                </button>
+                            </div>
+                            {/* Username and accound adding toggle */}
+                            <div className='flex items-center justify-between mt-4'>
+                                <h3>{myDetails.sender.name}</h3>
+                                <button>
+                                    <ExpandMore/>
+                                </button>
+                            </div>
+                        </div>
+                        {/* Navigations Menus */}
+                        <div className='flex flex-col gap-2 p-2'>
                             <button className='flex gap-3 items-center text-sm   hover:bg-[#EEEEEE] dark:hover:bg-[#141414] p-2 rounded duration-200 ease-in-out'>
                                 <Bookmark fontSize='small' className='text-iconColor dark:text-white' />
                                 Saved Messages
@@ -41,20 +61,6 @@ const TgMenusDrawer =({ isDrawerOpen, toggleDrawer })=> {
                             <button className='flex gap-3 items-center text-sm   hover:bg-[#EEEEEE] dark:hover:bg-[#141414] p-2 rounded duration-200 ease-in-out'>
                                 <Settings fontSize='small' className='text-iconColor dark:text-white' />
                                 Settings
-                            </button>
-                            <button className='flex gap-3 items-center text-sm   hover:bg-[#EEEEEE] dark:hover:bg-[#141414] p-2 rounded duration-200 ease-in-out'>
-                                <DarkMode fontSize='small' className='text-iconColor dark:text-white' />
-                                <div className='flex items-center justify-between w-full'>
-                                    Night Mode
-                                    <Switch
-                                        checked={theme === 'dark'}
-                                        onChange={() => toggleTheme()}
-                                        // onClick={toggleTgMenu}
-                                        inputProps={{ 'aria-label': 'controlled' }}
-                                        size="small"
-                                        color='#ff0000'
-                                    />
-                                </div>
                             </button>
                             <button className='flex gap-3 items-center text-sm   hover:bg-[#EEEEEE] dark:hover:bg-[#141414] p-2 rounded duration-200 ease-in-out'>
                                 <Animation fontSize='small' className='text-iconColor dark:text-white' />
@@ -74,6 +80,6 @@ const TgMenusDrawer =({ isDrawerOpen, toggleDrawer })=> {
             </Drawer>
         </div>
     );
-}
+};
 
 export default TgMenusDrawer;

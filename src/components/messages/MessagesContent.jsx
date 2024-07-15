@@ -2,22 +2,26 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLoaderData } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
-import { setActiveChatUser } from '../../features/chatSlice';
+import { setActiveChatUser, setMyDetails } from '../../features/chatSlice';
 import { setIsChatSelected } from '../../features/messageSlice';
+import { useIsMobile } from '../../hooks/useIsMobile';
 import { getLastMessageDate } from '../../utils/getLastMessageDate';
 import ChatHead from './ChatHead';
 import DisplayMessages from './DisplayMessages';
 import MessageInputBox from './MessageInputBox';
-import { useIsMobile } from '../../hooks/useIsMobile';
 
 const MessagesContent = () => {
   const { data: messages } = useLoaderData();
   const dispatch = useDispatch();
   useEffect(() => {
     if (messages) {
-      const filteredMessages = messages.filter(message => message.sender.name !== 'BeyondChat');
-      if (filteredMessages.length > 0) {
-        dispatch(setActiveChatUser(filteredMessages[0]));
+      const activeChatUser = messages.filter(message => message.sender.name !== 'BeyondChat');
+      if (activeChatUser.length > 0) {
+        dispatch(setActiveChatUser(activeChatUser[0]));
+      }
+      const accountInfo = messages.filter(message => message.sender.name === 'BeyondChat');
+      if (accountInfo.length > 0) {
+        dispatch(setMyDetails(accountInfo[0]));
       }
     }
   }, [messages, dispatch]);
