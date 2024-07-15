@@ -12,7 +12,7 @@ const Sidebar = () => {
     return <ChatLoading />;
   }
   return (
-    <div className='min-h-screen p-2 pt-0 bg-white dark:bg-darkBg'>
+    <div className='min-h-screen p-0 md:p-2 pt-0 bg-white dark:bg-darkBg'>
       <SidebarHeader />
       <div
         onClick={() => dispatch(setIsChatSelected(true))}
