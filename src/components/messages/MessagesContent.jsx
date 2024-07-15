@@ -43,7 +43,7 @@ const MessagesContent = () => {
       <div className='w-full md:w-8/12 mx-auto mt-4 md:mt-8'>
         {/* Display the Message Sending Date */}
         <div className='w-28 mx-auto bg-[#81a778b6] dark:bg-darkHover bg-opacity-20 text-center font-semibold text-white rounded-2xl p-1 mb-2 sticky top-20  md:top-24 z-50'>{sendOn}</div>
-        <div className='min-h-screen'>
+        <div className='min-h-screen mb-8'>
           {
             messages.map((message) => <DisplayMessages key={message.id} message={message} />)
           }

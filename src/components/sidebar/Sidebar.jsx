@@ -15,6 +15,7 @@ const Sidebar = () => {
     <div className='min-h-screen p-0 md:p-2 pt-0 bg-white dark:bg-darkBg'>
       <SidebarHeader />
       <div
+      className='mt-2 mx-2'
         onClick={() => dispatch(setIsChatSelected(true))}
       >
         {
