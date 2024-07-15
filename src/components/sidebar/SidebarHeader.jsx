@@ -5,7 +5,7 @@ import { useIsMobile } from '../../hooks/useIsMobile';
 import TelegramMenus from '../menus/TelegramMenus';
 import TemporaryDrawer from '../menus/TgMenusDrawer';
 
-const SidebarHeader = () => {
+const SidebarHeader = ({isDrawerOpen, setIsDrawerOpen}) => {
     const [isSearchedFocused, setIsSearchedFocused] = useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleClick = (event) => {
@@ -20,7 +20,6 @@ const SidebarHeader = () => {
     const id = open ? 'telegram-menu-popover' : undefined;
 
     //Functionality for Drawer
-    const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
 
     const toggleDrawer = (newOpen) => () => {
         setIsDrawerOpen(newOpen);
