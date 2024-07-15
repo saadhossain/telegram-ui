@@ -35,10 +35,11 @@
 ### Send Message
 - Users can type messages in the input box.
 - Clicking on the Mic icon starts a countdown for voice recording, with options to delete or send the recorded message.
-- Emoji icon opens a popover with a rich list of emojis.
+The emoji icon opens a popover with a rich list of emojis.
 
 ### Telegram Options/Setting Menu
 - Clicking on the Bars/Sandwich Icon opens options, including Dark Mode (currently functional).
+- On mobile devices from the home page, use can swipe from left to right to open the sidebar/menu.
 
 ## Experience
 This is just the beginning! There are many features and improvements planned to make this app more interactive and functional.
