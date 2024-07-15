@@ -16,6 +16,7 @@ const TgMenusDrawer = ({ isDrawerOpen, toggleDrawer }) => {
         dispatch(setTheme(newTheme));
         localStorage.setItem('theme', newTheme);
     };
+    const userName = myDetails?.sender?.name ;
     return (
         <div className='md:hidden'>
             <Drawer open={isDrawerOpen} onClose={toggleDrawer(false)}>
@@ -38,7 +39,7 @@ const TgMenusDrawer = ({ isDrawerOpen, toggleDrawer }) => {
                             </div>
                             {/* Username and accound adding toggle */}
                             <div className='flex items-center justify-between mt-4'>
-                                <h3>{myDetails.sender.name}</h3>
+                                <h3>{userName ? userName:'Beyondchats' }</h3>
                                 <button>
                                     <ExpandMore/>
                                 </button>
