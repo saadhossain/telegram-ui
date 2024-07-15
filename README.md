@@ -1,6 +1,6 @@
-# Telegram UI Clone Project
+#### Telegram UI Clone Project
 
-Check out the live app here: [Telegram UI Clone](https://telegram-ui-teal.vercel.app/)
+**Check out the live app here: [Telegram UI Clone](https://telegram-ui-teal.vercel.app/)**
 
 **Note:** If any Dark Mode Extension is enabled in your browser, please disable it for the best viewing experience.
 
