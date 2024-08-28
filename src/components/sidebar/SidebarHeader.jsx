@@ -28,7 +28,7 @@ const SidebarHeader = ({isDrawerOpen, setIsDrawerOpen}) => {
     const handleOpenMenus = isMobile ? toggleDrawer(true) : handleClick;
     return (
         <>
-            <div className='w-full flex gap-2 items-center justify-between sticky top-0 bg-primary md:bg-white dark:bg-darkBg p-2'>
+            <div className='w-full flex gap-2 items-center justify-between sticky top-0 bg-primary md:bg-white dark:bg-darkHover md:dark:bg-darkBg p-2'>
                 <div className='flex items-center gap-2'>
                     <button
                         aria-describedby={id} variant="contained"

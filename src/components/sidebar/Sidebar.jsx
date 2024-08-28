@@ -23,7 +23,6 @@ const Sidebar = () => {
     trackMouse: true
   });
   const isMobile = useIsMobile();
-
   if (isLoading) {
     return <ChatLoading />;
   }
@@ -38,7 +37,7 @@ const Sidebar = () => {
         onClick={() => dispatch(setIsChatSelected(true))}
       >
         {
-          chats.map((chat) => <DisplayChats key={chat.id} chat={chat} />)
+          chats ? chats.map((chat) => <DisplayChats key={chat.id} chat={chat} />) : <h4 className='border-l-4 border-primary dark:border-darkPrimary text-primary dark:text-darkPrimary font-bold text-xl pl-2'>No Chats Found!</h4>
         }
       </div>
     </div>
